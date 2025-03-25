@@ -1,4 +1,4 @@
-let ball, floor, wall1, wall2, ceiling, goal, timed, scoreSprite, scoreChange, endScreen, eScreen;
+let ball, floor, wall1, wall2, ceiling, goal, timed, fScore, scoreSprite, scoreChange, endScreen, eScreen;
 let score = 0;
 let speedY=10;
 let speedX=10;
@@ -82,28 +82,30 @@ function setup() {
 	timerSprite.layer = 1;
 	timerSprite.stroke = 'skyblue'
 
-	timed = round(world.realTime, [1]);
-
-	function endScreen(){
-		eScreen = new Sprite(250, 250, 1, 1, 'none');
-		eScreen.color = 'skyblue';
-		eScreen.text = score/time;
-		eScreen.textSize = 40;
-	}
 }
 
 function draw() {
 	background('skyblue');
+
+	timed = round(world.realTime, [1]);
+
+	function scoreChange(){
+		score+=1;
+	}
+
+	function endScreen(){
+		eScreen = new Sprite(250, 250, 1, 1, 'none');
+		eScreen.color = 'skyblue';
+		fScore = round(score/timed*100, [2]);
+		eScreen.textSize = 40;
+		eScreen.text = fScore;
+	}
 
 	if (mouse.presses()) {
 		ball.speed = 10;
 		ball.moveTowards(mouse, 0.15);
 		}
 	
-		function scoreChange(){
-			score+=1;
-		}
-
 	if (recta1.collides(goal)){
 		recta1.remove();
 		scoreChange();
@@ -172,8 +174,9 @@ function draw() {
 		scoreSprite.text = score;
 		timerSprite.text = timed;
 
-	if (score2 == 16){
-		endScreen();
-	}
+if (score == 16){
+	endScreen();
+	noLoop();
+}
 
 }
