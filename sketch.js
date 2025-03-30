@@ -1,4 +1,4 @@
-let ball, floor, wall1, wall2, ceiling, goal, timed, fScore, scoreSprite, scoreChange, endScreen, eScreen;
+let ball, floor, wall1, wall2, ceiling, goal, timed, fScore, bText, scoreSprite, scoreChange, endScreen, eScreen;
 let score = 0;
 let speedY=10;
 let speedX=10;
@@ -12,6 +12,7 @@ function setup() {
 	let iOrange = color(255, 79, 0);
 	let iOrangeInverse = color(0, 176, 255);
 	allSprites.layer = 0;
+	bText = "seamus";
 
 	floor = new Sprite(250, 498.5, 500, 5, 'static');
 	floor.bounciness = 0.5;
@@ -35,6 +36,9 @@ function setup() {
 	ball.stroke = iOrange;
 	ball.color = iOrangeInverse;
 	ball.strokeWeight = 5;
+	ball.textSize = 10;
+	ball.text = bText;
+	ball.textColor = iOrange;
 
 	recta1= new Sprite(175, 175, 50, 50, 'dynamic');
 	recta2= new Sprite(175, 225, 50, 50, 'dynamic');
