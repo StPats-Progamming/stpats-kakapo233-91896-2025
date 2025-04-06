@@ -100,7 +100,7 @@ function draw() {
 	function endScreen(){
 		eScreen = new Sprite(250, 250, 1, 1, 'none');
 		eScreen.color = 'skyblue';
-		fScore = round(score/timed*100, [2]);
+		fScore = "SCORE="+round(score/timed*100, [2]);
 		eScreen.textSize = 40;
 		eScreen.text = fScore;
 	}
