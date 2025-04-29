@@ -1,3 +1,4 @@
+//declarations
 let ball, floor, wall1, wall2, ceiling, goal, timed, fScore, bText, scoreSprite, scoreChange, endScreen, eScreen;
 let score = 0;
 let speedY=10;
@@ -6,6 +7,7 @@ let speed2Y=10;
 let speed2X=10;
 let recta1, recta2, recta3, recta4, recta5, recta6, recta7, recta8, recta9, recta10, recta11, recta12, recta13, recta14, recta15, recta16;
 
+//setup and sprite creation
 function setup() {
 	new Canvas(500, 500);
 	displayMode('centered');
@@ -88,6 +90,7 @@ function setup() {
 
 }
 
+//draw function, functionss and supporting material, game mechanics
 function draw() {
 	background('skyblue');
 
