@@ -1,5 +1,6 @@
-//declarations
-let ball, floor, wall1, wall2, ceiling, goal, timed, fScore, bText, scoreSprite, scoreChange, endScreen, eScreen;
+//declarations of sprites, functions, and some atributes
+let ball, floor, wall1, wall2, ceiling, goal, timed, fScore, scoreSprite, scoreChange, endScreen, eScreen;
+let bText = "seamus";
 let score = 0;
 let speedY=10;
 let speedX=10;
@@ -9,29 +10,36 @@ let recta1, recta2, recta3, recta4, recta5, recta6, recta7, recta8, recta9, rect
 
 //setup and sprite creation
 function setup() {
+	//defines canvas and custom colours
 	new Canvas(500, 500);
 	displayMode('centered');
 	let iOrange = color(255, 79, 0);
 	let iOrangeInverse = color(0, 176, 255);
 	allSprites.layer = 0;
-	bText = "seamus";
+	
 
+	//makes floor sprite
 	floor = new Sprite(250, 498.5, 500, 5, 'static');
 	floor.bounciness = 0.5;
 
+	//makes wall1 sprite
 	wall1 = new Sprite(2.5, 250, 500, 5, 'static');
 	wall1.rotation = 90;
 	wall1.bounciness = 0.5;
 
+	//makes wall2 sprite
 	wall2 = new Sprite(498.5, 250, 500, 5, 'static');
 	wall2.rotation = 90;
 	wall2.bounciness = 0.5;
 
+	//makes ceiling sprite
 	ceiling = new Sprite(250, 2.5, 500, 5, 'static');
 	ceiling.bounciness = 0.5;
 
+	//makes goal sprite
 	goal = new Sprite(250, 2.5, 100, 5, 'static')
 
+	//makes ball/player sprite
 	ball = new Sprite(100, 100, 45, 45,);
 	ball.collision = 'k';
 	ball.rotation = 45;
@@ -41,7 +49,9 @@ function setup() {
 	ball.textSize = 10;
 	ball.text = bText;
 	ball.textColor = iOrange;
+	
 
+	//makes recta sprites
 	recta1= new Sprite(175, 175, 50, 50, 'dynamic');
 	recta2= new Sprite(175, 225, 50, 50, 'dynamic');
 	recta3= new Sprite(175, 275, 50, 50, 'dynamic');
@@ -59,6 +69,7 @@ function setup() {
 	recta15= new Sprite(325, 275, 50, 50, 'dynamic');
 	recta16= new Sprite(325, 325, 50, 50, 'dynamic');
 
+	//defines recta sprites colours
 	recta1.color = 'red';
 	recta2.color = 'orange';
 	recta3.color = 'yellow';
@@ -76,12 +87,14 @@ function setup() {
 	recta15.color = 'purple';
 	recta16.color = 'black';
 
+	//makes scoresprite
 	scoreSprite = new Sprite(30, 30, 1, 1, 'none');
 	scoreSprite.color = 'skyblue'
 	scoreSprite.textSize = 40;
 	scoreSprite.layer = 1;
 	scoreSprite.stroke = 'skyblue'
 
+	//makes timersprite
 	timerSprite = new Sprite(440, 30, 1, 1, 'none');
 	timerSprite.color = 'skyblue'
 	timerSprite.textSize = 40;
@@ -94,12 +107,15 @@ function setup() {
 function draw() {
 	background('skyblue');
 
+	//defines timer text
 	timed = round(world.realTime, [1]);
 
+	//updates score
 	function scoreChange(){
 		score+=1;
 	}
 
+	//dislpays endscreen and calculates score
 	function endScreen(){
 		eScreen = new Sprite(250, 250, 1, 1, 'none');
 		eScreen.color = 'skyblue';
@@ -108,11 +124,13 @@ function draw() {
 		eScreen.text = fScore;
 	}
 
+	//movment of player
 	if (mouse.presses()) {
 		ball.speed = 10;
 		ball.moveTowards(mouse, 0.15);
 		}
 	
+		//collision with goal triggering box removal and score change
 	if (recta1.collides(goal)){
 		recta1.remove();
 		scoreChange();
@@ -178,12 +196,15 @@ function draw() {
 		scoreChange();
 		}
 
+		//defines scoresprite text
 		scoreSprite.text = score;
+		//defines timersprite text
 		timerSprite.text = timed;
 
-if (score == 16){
-	endScreen();
-	noLoop();
-}
+		//triggers endscreen and stops game
+	if (score == 16){
+		endScreen();
+		noLoop();
+		}
 
 }
