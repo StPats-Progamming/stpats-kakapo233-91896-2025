@@ -107,14 +107,17 @@ function setup() {
 function draw() {
 	background('skyblue');
 
+	// cant be moved from draw as it updates the timer
 	//defines timer text
 	timed = round(world.realTime, [1]);
 
+	// cant be moved from draw as it updates the score
 	//updates score
 	function scoreChange(){
 		score+=1;
 	}
 
+	// cant be moved from draw as it relies on values updated with in draw
 	//dislpays endscreen and calculates score
 	function endScreen(){
 		eScreen = new Sprite(250, 250, 1, 1, 'none');
