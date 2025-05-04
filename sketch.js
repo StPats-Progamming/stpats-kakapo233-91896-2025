@@ -1,5 +1,5 @@
 //declarations of sprites, functions, and some atributes
-let ball, floor, wall1, wall2, ceiling, goal, timed, fScore, scoreSprite, scoreChange, endScreen, eScreen;
+let ball, floor, wall1, wall2, ceiling, goal, timed, fScore, scoreSprite, timerSprite, scoreChange, endScreen, eScreen;
 let bText = "seamus";
 let score = 0;
 let speedY=10;
